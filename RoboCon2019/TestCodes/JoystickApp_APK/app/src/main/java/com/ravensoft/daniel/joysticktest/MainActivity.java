@@ -151,8 +151,8 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             public void onClick(View view) {
                 Log.d("rotate","clockwise");
                 if(mConnectedThread != null){
-                    mConnectedThread.write("c");
-                    mConnectedThread.write("c");
+                    mConnectedThread.write("z");
+                    mConnectedThread.write("z");
                 }
             }
         });
@@ -161,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements JoystickView.Joys
             public void onClick(View view) {
                 Log.d("rotate","anticlockwise");
                 if(mConnectedThread != null){
-                    mConnectedThread.write("a");
-                    mConnectedThread.write("a");
+                    mConnectedThread.write("x");
+                    mConnectedThread.write("x");
 
                 }
             }
