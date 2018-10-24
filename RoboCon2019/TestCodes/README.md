@@ -14,7 +14,6 @@ Ensure that the HC-05 Module is Mounted on the Base.
 5. Use Directional Arrows for Moving in the Directions Indicated in the App.
 
 ### JoystickApp_APK.
-Work in Progress.
 This is for the Bluetooth App that we plan to use for the Competition.
 
 ### PS2_base.
