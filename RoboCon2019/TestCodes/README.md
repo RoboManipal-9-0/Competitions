@@ -18,7 +18,7 @@ Ensure that the HC-05 Module is Mounted on the Base.
 Work in Progress.
 This is for the Bluetooth App that we plan to use for the Competition.
 
-### ~~~PS2_base~~ : (Outdated)
+### ~~PS2_base~~ : (Outdated)
 
 #### Pre-requisites:
 PS2 Shield and Controller with the Baud Rate Correctly Set on the Hardware.
