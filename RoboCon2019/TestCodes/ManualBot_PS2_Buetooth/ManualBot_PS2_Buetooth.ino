@@ -8,17 +8,28 @@
 #define motorMode MODE_SM
 
 #define BluetoothSerial Serial2
-#define IMUSerial Serial3
+#define IMUSerial Serial1
 
-// Wheels are at the following angles -
+// 4 wheel drive
 int no_wheels = 4;
+// Wheels are at the following angles
 int angles_degrees[] = {45, 135, 225, 315};
 
-// Pins connected to the Motor Drivers -
-int PWM_pins[] = {8, 10, 9, 7};          // List of PWM pins
-int DIR_pins[] = {47, 53, 51, 49};    // List of DIR pins
-int MOTOR_modes[] = {motorMode, motorMode, motorMode, motorMode};
-bool reverseDIRs[] = {false, false, true, true};
+int PWM_pins[] = {7, 8, 9, 10};    // List of PWM pins
+int DIR_pins[] = {49, 47, 51, 53}; // List of DIR pins
+int MOTOR_modes[] = {MODE_SM, MODE_SM, MODE_SM, MODE_SM};
+
+// Reverse connection list
+/*
+   Forward connected : If HIGH is gven, axis of rotation is positive
+   Backward connected : If LOW is gven, axis of rotation is positive
+    1st motor is reverse connected
+    2nd motor is forward connected
+    3rd motor is reverse connected
+    4th motor is forward connected
+*/
+bool reverseDIRs[] = {true, false, true, true};
+
 
 NWCHBase FourWheelBase;
 
@@ -41,7 +52,7 @@ void setup()
   IMUSerial.begin(57600);         // IMU Serial.
   IMU.AttachIMUSerial(&IMUSerial);
   IMU.UpdateData();               // Set Ininial Yaw.
-  ideal_orient = IMU.GetYaw();
+  ideal_orient = IMU.GetYaw() + 0.25;
 
   //############# Base Motion #################
   Serial.begin(115200);  // Setup the serial for the debugger
@@ -59,7 +70,7 @@ void setup()
   }
 
   //############## PID #######################
-  P.assignPIDParameters(0.25, 0, 0); //0.1875
+  P.assignPIDParameters(4.5, 0, 1);
   P.debugger.Initialize("PID", &Serial, DEBUG);
   P.debugger.disableDebugger();
 
@@ -71,6 +82,7 @@ void setup()
 void UpdateDataPS2()
 {
   PS2.ReadPS2Values();
+  PS2.ReadButtonStates();
   PS2.AdjustCoordinates();
   PS2.CalcAngleSpeed();
 }
@@ -79,9 +91,9 @@ void RotationalCorrection()
 {
   IMU.UpdateData();
   rot_pwm = -P.retError(ideal_orient, IMU.GetYaw());
-  if (fabs(rot_pwm) > 30)
+  if (fabs(rot_pwm) > 100)
   {
-    rot_pwm = ((rot_pwm / fabs(rot_pwm)) * 30);
+    rot_pwm = ((rot_pwm  / fabs(rot_pwm)) * 100);
   }
   Serial.print(ideal_orient);
   Serial.print("\t");
@@ -95,6 +107,8 @@ void WorkBluetooth()
   while (BluetoothSerial.available())
   {
     char ch = BluetoothSerial.read();
+    Serial.print(millis());
+    Serial.print("\t");
     Serial.println(ch);
     // ##################### PWM Alteration #################
     if ((ch >= '0' && ch <= '9') || (ch == 'q'))
@@ -150,7 +164,7 @@ void WorkBluetooth()
           // Button Adjustant to the Red/Green Dot. Used for Counter - Clockwise Direction Rotation.
           // will Rotate for 5 Degrees Approx;
           ideal_orient += 5;
-          ch = 'R';
+          ch = 'P';
           break;
 
         case 'u':
@@ -158,7 +172,7 @@ void WorkBluetooth()
           // Button Adjustant to the Counter-Clockwise Rotation Button. Used for Clockwise Direction Rotation.
           // will Rotate for 5 Degrees Approx;
           ideal_orient -= 5;
-          ch = 'R';
+          ch = 'P';
           break;
 
         case 'v':
@@ -172,9 +186,10 @@ void WorkBluetooth()
         default:
           FourWheelBase.Move(0, 0, 0);
       }
-      if (ch == 'R')
+
+      if (ch == 'P')
       {
-        while (fabs(IMU.GetYaw() - ideal_orient) >= 0.5)
+        while (fabs(IMU.GetYaw() - ideal_orient) >= 1)
         {
           RotationalCorrection();
           FourWheelBase.Move(0, 0, rot_pwm);
@@ -182,6 +197,7 @@ void WorkBluetooth()
       }
       if (ch != 'S')
         RotationalCorrection();
+
     }
   }
 }
@@ -189,9 +205,23 @@ void WorkBluetooth()
 void WorkPS2()
 {
   UpdateDataPS2();
+  IMU.UpdateData();
   pwm = PS2.speeds;
   trans_angle = PS2.angle;
-  FourWheelBase.Move(pwm, trans_angle);
+  if (PS2.left1_Bstate == HIGH)
+  {
+    ideal_orient -= 5;
+  }
+  if (PS2.right1_Bstate == HIGH)
+  {
+    ideal_orient += 5;
+  }
+  Serial.print(pwm);
+  Serial.print("\t");
+  Serial.print(trans_angle);
+  Serial.print("\t");
+  Serial.println(ideal_orient);
+  FourWheelBase.Move(pwm, trans_angle, rot_pwm);
   RotationalCorrection();
 }
 
