@@ -1,4 +1,4 @@
-#include<NWCHBase.h>
+ #include<NWCHBase.h>
 
 #define BluetoothSerial Serial2
 
@@ -7,9 +7,8 @@ int no_wheels = 4;
 // Wheels are at the following angles
 int angles_degrees[] = {45, 135, 225, 315};
 
-// Pins connected to the motor drivers -
-int PWM_pins[] = {8, 10, 9, 7};          // List of PWM pins
-int DIR_pins[] = {47, 53, 51, 49};    // List of DIR pins
+int PWM_pins[] = {7, 8, 9, 10};    // List of PWM pins
+int DIR_pins[] = {49, 47, 51, 53}; // List of DIR pins
 int MOTOR_modes[] = {MODE_SM, MODE_SM, MODE_SM, MODE_SM};
 
 // Reverse connection list
@@ -21,7 +20,7 @@ int MOTOR_modes[] = {MODE_SM, MODE_SM, MODE_SM, MODE_SM};
     3rd motor is reverse connected
     4th motor is forward connected
 */
-bool reverseDIRs[] = {false, false, true, true};
+bool reverseDIRs[] = {true, false, true, true};
 
 // Class object (an object of class NWCHBase)
 NWCHBase FourWheelBase;
