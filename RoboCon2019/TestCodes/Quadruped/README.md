@@ -13,7 +13,7 @@ Click [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com
 
 ## Body -
 
-Click [here](https://a360.co/2PoCGyn) to view STL File.
+Click [here](https://a360.co/2Q0PXO4) to view STL File.
 
 ![Body](../../DATA/Quadruped_IMAGES/Body.PNG) <br><br>
 ![Body1](../../DATA/Quadruped_IMAGES/Body_1.PNG) <br><br>
