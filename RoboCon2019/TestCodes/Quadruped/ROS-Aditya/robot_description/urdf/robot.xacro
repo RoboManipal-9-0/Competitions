@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find robot_description)/urdf/links_joints.xacro"/>
+    <BOX name="base_link" origin_rpy="0 0 0" origin_xyz="0 0 2" size="1.49077 1.50805 0.32"/>
+    <BOX name="link1" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 0" size="0.971 0.32 0.32"/>
+    <JOINT_REVOLUTE name="base_link__link1" parent="base_link" child="link1" origin_xyz="0.745385 -0.754025 2" origin_rpy="0 0 0" axis_xyz="0 1 0"/>
+    <BOX name="dxel1" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 -0.02" size="0.32 0.32 0.36"/>
+    <JOINT_FIXED parent="link1" child="dxel1" axis_xyz="0 1 0" origin_xyz="0.3255 0 0" name="link1__dxel1" origin_rpy="0 0 0"/>
+    <BOX name="link2" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
+    <JOINT_REVOLUTE name="dxel1__link2" parent="dxel1" child="link2" origin_rpy="0 0 0" origin_xyz="0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+    
+  
+</robot>
