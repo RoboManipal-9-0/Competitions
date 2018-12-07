@@ -18,10 +18,10 @@ int no_wheels = 4;
 // Wheels are at the following angles
 int angles_degrees[] = {45, 135, 225, 315};
 
-int PWM_pins[] = {7, 10, 9, 8};    // List of PWM pins
-int DIR_pins[] = {49, 53, 51, 47}; // List of DIR pins
+int PWM_pins[] = {8,9,10,7};    // List of PWM pins
+int DIR_pins[] = {47, 51,53,49}; // List of DIR pins
 int MOTOR_modes[] = {MODE_SM, MODE_SM, MODE_SM, MODE_SM};
-bool reverseDIRs[] = {true, false, true, true};
+bool reverseDIRs[] = {true, true, false, true};
 
 int LSA_pins[] = {22, 24, 26};
 bool LSA_active_states[] = {LSA_ACTIVE_STATE, LSA_ACTIVE_STATE, LSA_ACTIVE_STATE};

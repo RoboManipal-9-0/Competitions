@@ -22,7 +22,7 @@ DebuggerSerial debugger;
 
 void setup()
 {
-  Serial.begin(115200);  // Setup the serial for the debugger
+  Serial.begin(9600);  // Setup the serial for the debugger
   debugger.Initialize("Default", &Serial);
   debugger.print("Starting Setup ", INFO);
 
@@ -46,10 +46,10 @@ void setup()
 void loop()
 {
   String msg = "LSA Values- LEFT: ";
-  msg.concat(L[LEFT].ReadLSA(false));
+  msg.concat(L[LEFT].ReadLSA(true));
   msg.concat("\t FRONT: ");
-  msg.concat(L[FRONT].ReadLSA(false));
+  msg.concat(L[FRONT].ReadLSA(true));
   msg.concat("\t RIGHT: ");
-  msg.concat(L[RIGHT].ReadLSA(false));
+  msg.concat(L[RIGHT].ReadLSA(true));
   Serial.println(msg);
 }
