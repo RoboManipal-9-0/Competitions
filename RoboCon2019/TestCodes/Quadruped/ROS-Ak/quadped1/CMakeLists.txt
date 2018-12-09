@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   urdf
   message_generation
+  controller_manager
+  robot_state_publisher
+  joint_state_controller
 )
 
 ## System dependencies are found with CMake's conventions

@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find quadped1)/urdf/links_joints.xacro"/>
     <!--first leg -->
     <BOX name="base_link" origin_rpy="0 0 0" origin_xyz="0 0 2" size="1.49077 1.50805 0.32"/>
@@ -33,5 +33,10 @@
     <JOINT_FIXED parent="link7" child="dxel4" axis_xyz="0 1 0" origin_xyz="-0.3255 0 0" name="link7__dxel4" origin_rpy="0 0 0"/>
     <BOX name="link8" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
     <JOINT_REVOLUTE name="dxel4__link8" parent="dxel4" child="link8" origin_rpy="0 0 0" origin_xyz="-0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+
+    <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo>
 
 </robot>
