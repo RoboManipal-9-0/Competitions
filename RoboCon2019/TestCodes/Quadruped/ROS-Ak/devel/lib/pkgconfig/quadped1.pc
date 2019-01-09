@@ -1,0 +1,8 @@
+prefix=/home/akshatha_kamath/catkin_ws/devel
+
+Name: quadped1
+Description: Description of quadped1
+Version: 0.0.0
+Cflags: -I/home/akshatha_kamath/catkin_ws/devel/include
+Libs: -L/home/akshatha_kamath/catkin_ws/devel/lib 
+Requires: roscpp rospy std_msgs urdf sensor_msgs

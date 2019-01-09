@@ -5,5 +5,6 @@
   <node name="rviz" pkg="rviz" type="rviz"/>
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
       <param name="use_gui" value="False"/>
+      <rosparam param="source list">["joint_states"]</rosparam>
   </node>
 </launch>
