@@ -1,11 +1,11 @@
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find robot_leg)/urdf/robot.xacro'"/>
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find robot_leg)/urdf/robot.xacro'"/>
     <node name="jointpublisher" pkg="robot_leg" type="leg_control.py" output="screen"/>
     <node name="rviz" pkg="rviz" type="rviz"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
         <param name="use_gui" value="False"/>
-        <rosparam param="source list">["joint_states"]</rosparam>
+        <rosparam param="source_list">["/my_joint_states"]</rosparam>
     </node>
 </launch>

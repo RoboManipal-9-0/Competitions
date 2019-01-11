@@ -7,7 +7,7 @@ from sensor_msgs.msg import JointState
 
 def my_Publisher():
 	rospy.init_node("jointpublisher", anonymous=True)
-	joint_pub=rospy.Publisher("joint_states", JointState, queue_size=100)
+	joint_pub=rospy.Publisher("my_joint_states", JointState, queue_size=100)
 	my_rate=rospy.Rate(10)
 
 	data = JointState()
