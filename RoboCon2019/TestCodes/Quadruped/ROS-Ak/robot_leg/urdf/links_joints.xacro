@@ -86,7 +86,9 @@
         <geometry>
           <mesh filename="${meshfile}" scale="${meshscale}"/>
         </geometry>
-        <material name="light_black"/>
+        <material name="silver">
+          <color rgba="${192/255} ${192/255} ${192/255} 1.0"/>
+        </material>
       </visual>
     </link>
   </xacro:macro>
