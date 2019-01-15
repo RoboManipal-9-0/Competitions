@@ -16,7 +16,7 @@
 	  izz="1">
     </MESH>
     <MESH name="link1"
-          origin_xyz="0 -0.2011 0.038"
+          origin_xyz="0 -0.2011 0.0375"
           origin_rpy="1.57070 0 0"
 	  meshfile="package://new_robot/meshes/upper link right.stl"
 	  meshscale="1 1 1"
@@ -28,7 +28,7 @@
 	  iyz="1"
 	  izz="1">
     </MESH>
-    <JOINT_REVOLUTE name="base_link__link1" parent="base_link" child="link1" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 0.2875 -0.044"/>
+    <JOINT_REVOLUTE name="base_link__link1" parent="base_link" child="link1" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 0.315 -0.044"/>
     <MESH name="dxel1"
           origin_xyz="0 0.012 0.1412"
           origin_rpy="1.57070 0 0"
@@ -73,7 +73,7 @@
     <JOINT_REVOLUTE name="link2__dxel2" parent="link2" child="dxel2" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.22 -0.0945"/>
     
     <MESH name="link3"
-          origin_xyz="0.25 -0.575 0.15"
+          origin_xyz="0.25 -0.5745 0.15"
           origin_rpy="1.9607 0 3.1416"
 	  meshfile="package://new_robot/meshes/upper link left.stl"
 	  meshscale="1 1 1"
@@ -85,7 +85,7 @@
 	  iyz="1"
 	  izz="1">
     </MESH>
-    <JOINT_REVOLUTE name="base_link__link3" parent="base_link" child="link3" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.36 -0.044"/>
+    <JOINT_REVOLUTE name="base_link__link3" parent="base_link" child="link3" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.355 -0.044"/>
     <MESH name="dxel3"
           origin_xyz="0.25 -0.42 0.09"
           origin_rpy="1.57070 0 3.1416"
@@ -102,7 +102,7 @@
     <JOINT_REVOLUTE name="link3__dxel3" parent="link3" child="dxel3" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.22 -0.0945"/>
     
     <MESH name="link4"
-          origin_xyz="0 -0.2011 0.038"
+          origin_xyz="0 -0.2011 0.0375"
           origin_rpy="1.57070 0 0"
 	  meshfile="package://new_robot/meshes/upper link right.stl"
 	  meshscale="1 1 1"
@@ -114,7 +114,7 @@
 	  iyz="1"
 	  izz="1">
     </MESH>
-    <JOINT_REVOLUTE name="base_link__link4" parent="base_link" child="link4" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.36 -0.044"/>
+    <JOINT_REVOLUTE name="base_link__link4" parent="base_link" child="link4" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.345 -0.044"/>
     <MESH name="dxel4"
           origin_xyz="0 0.012 0.1412"
           origin_rpy="1.57070 0 0"
