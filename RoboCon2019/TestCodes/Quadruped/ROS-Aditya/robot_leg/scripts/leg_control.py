@@ -37,7 +37,20 @@ while(start <= xf):
     start = start+delta_x
 theta1 = []
 theta2 = []
-for i in range(n+1):
+temp1 = []
+temp2 = []
+i = 0
+theta1 = []
+theta2 = []
+
+while(i <= n):
+	x.append(x[n-i])
+	y.append(yi*2-y[n-i])
+	i = i + 1
+"""x.append(temp1)
+y.append(temp2)"""
+z = 2*n+2
+for i in range(z):
     d = math.acos((l1**2+l2**2-(x[i]**2+y[i]**2))/(2*l1*l2))
     t1 = y[i]*l2*math.cos(d)
     t2 = y[i]*l1
@@ -45,10 +58,12 @@ for i in range(n+1):
     b1 = y[i]*l2*math.sin(d)
     b2 = x[i]*l2*math.cos(d)
     b3 = x[i]*l1
+    #print((t1-t2-t3)/(b1+b2-b3))
     angle = math.atan((t1-t2-t3)/(b1+b2-b3))
+    #print(angle+theta1_i)
+    #print(angle,theta2_i-angle-d)
     theta1.append(angle-theta1_i)
     theta2.append(theta2_i-angle-d)
-
 def my_Publisher():
 	rospy.init_node("jointpublisher", anonymous=True)
 	joint_pub=rospy.Publisher("my_joint_states", JointState, queue_size=100)
@@ -61,7 +76,7 @@ def my_Publisher():
 		
         # Inverse Kinematics equations
 	    # Using the derivation for the straight leg orientation i.e acute angles
-		for i in range(n+1):
+		for i in range(2*n+2):
 			if(theta1[i] > 0):
 				data.position.append(-theta1[i])
 			else:
