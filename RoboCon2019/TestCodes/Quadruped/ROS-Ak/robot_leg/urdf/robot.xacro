@@ -101,7 +101,7 @@
 	  izz="1">
     </MESH>
     <JOINT_REVOLUTE name="link3__dxel3" parent="link3" child="dxel3" axis_xyz="1 0 0" origin_rpy="0 0 0" origin_xyz="0 -0.22 -0.0945"/>
-    
+
     <MESH name="link4"
           origin_xyz="0 -0.2011 0.038"
           origin_rpy="1.57070 0 0"

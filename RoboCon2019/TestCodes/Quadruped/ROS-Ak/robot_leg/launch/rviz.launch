@@ -1,6 +1,6 @@
 <launch>
     <param name="robot_description" command="$(find xacro)/xacro '$(find robot_leg)/urdf/robot.xacro'"/>
-    <node name="jointpublisher" pkg="robot_leg" type="leg_control.py" output="screen"/>
+    <node name="jointpublisher" pkg="robot_leg" type="leg_control_3.py" output="screen"/>
     <node name="rviz" pkg="rviz" type="rviz"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
