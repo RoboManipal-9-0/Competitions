@@ -24,7 +24,7 @@ theta2_f = math.asin((l1*math.sin(theta1_f)-yi)/l2)# in general dependant on the
 xf = -l2*math.cos(theta2_f)+l1*math.cos(theta1_f)
 yf = l1*math.sin(theta1_f)-l2*math.sin(theta2_f)
 a = (xf/2-xi/2) #semi major axis
-b = a/2 #choose any ratio instead of two if u want
+b = a/1.5 #choose any ratio instead of two if u want
 center_x = xi+a
 center_y = yi
 n = 10 # number of intervals on the lower curve of ellipse
@@ -46,7 +46,7 @@ for i in range(n+1):
     b2 = x[i]*l2*math.cos(d)
     b3 = x[i]*l1
     angle = math.atan((t1-t2-t3)/(b1+b2-b3))
-    theta1.append(angle+theta1_i)
+    theta1.append(angle-theta1_i)
     theta2.append(theta2_i-angle-d)
 
 def my_Publisher():
@@ -62,7 +62,10 @@ def my_Publisher():
         # Inverse Kinematics equations
 	    # Using the derivation for the straight leg orientation i.e acute angles
 		for i in range(n+1):
-			data.position.append(theta1[i])
+			if(theta1[i] > 0):
+				data.position.append(-theta1[i])
+			else:
+				data.position.append(theta1[i])
 			data.position.append(theta2[i])
 			joint_pub.publish(data)
 			my_rate.sleep()
