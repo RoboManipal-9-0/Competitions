@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
+#include <math.h>
 
 sensor_msgs::JointState goal_state;
 
@@ -9,7 +10,7 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "legControl");
     ros::NodeHandle nh;
     ros::Publisher joint_pub = nh.advertise<sensor_msgs::JointState>("/quadruped/goalLegState", 1);
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(50);
     
     goal_state.name.push_back("hip_LF");
     goal_state.name.push_back("knee_LF");
@@ -17,14 +18,18 @@ int main(int argc, char** argv) {
     goal_state.velocity.push_back(0.5);
 
     while(ros::ok()) {
-        legGoalPosMsg(0.26, -0.26);
-        joint_pub.publish(goal_state);
-        loop_rate.sleep();
-        goal_state.position.clear();
-        legGoalPosMsg(0.0, 0.0);
-        joint_pub.publish(goal_state);
-        loop_rate.sleep();
-        goal_state.position.clear();
+        for (float i=-0.26; i<=0.26; i+=0.02) {
+            legGoalPosMsg(i, -i);
+            joint_pub.publish(goal_state);
+            loop_rate.sleep();
+            goal_state.position.clear();
+        }
+        for (float i=-0.26; i<=0.26; i+=0.02) {
+            legGoalPosMsg(-i, i);
+            joint_pub.publish(goal_state);
+            loop_rate.sleep();
+            goal_state.position.clear();
+        }
         ros::spinOnce();
     }
 
