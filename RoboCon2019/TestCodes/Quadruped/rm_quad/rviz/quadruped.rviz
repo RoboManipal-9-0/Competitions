@@ -72,6 +72,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        crus_FL:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        crus_FR:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        crus_RL:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        crus_RR:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         hip_FL:
           Alpha: 1
           Show Axes: false
@@ -88,6 +108,26 @@ Visualization Manager:
           Show Trail: false
           Value: true
         hip_RR:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_FL:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_FR:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_RL:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh_RR:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -107,6 +147,14 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
+        crus_FL:
+          Value: true
+        crus_FR:
+          Value: true
+        crus_RL:
+          Value: true
+        crus_RR:
+          Value: true
         hip_FL:
           Value: true
         hip_FR:
@@ -114,6 +162,14 @@ Visualization Manager:
         hip_RL:
           Value: true
         hip_RR:
+          Value: true
+        thigh_FL:
+          Value: true
+        thigh_FR:
+          Value: true
+        thigh_RL:
+          Value: true
+        thigh_RR:
           Value: true
       Marker Scale: 0.699999988079071
       Name: TF
@@ -124,13 +180,21 @@ Visualization Manager:
         base_footprint:
           base_link:
             hip_FL:
-              {}
+              thigh_FL:
+                crus_FL:
+                  {}
             hip_FR:
-              {}
+              thigh_FR:
+                crus_FR:
+                  {}
             hip_RL:
-              {}
+              thigh_RL:
+                crus_RL:
+                  {}
             hip_RR:
-              {}
+              thigh_RR:
+                crus_RR:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -158,25 +222,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.5940513610839844
+      Distance: 1.2147430181503296
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0020073961932212114
-        Y: -0.04538390040397644
-        Z: 0.08291430026292801
+        X: 0.14269417524337769
+        Y: 0.18524391949176788
+        Z: 0.30949026346206665
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8903987407684326
+      Pitch: 0.5147972702980042
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9603853225708008
+      Yaw: 1.1721923351287842
     Saved: ~
 Window Geometry:
   Displays:
