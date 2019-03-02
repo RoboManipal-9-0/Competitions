@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find rm_quad)/worlds/empty.world"/>
+        <arg name="debug" value="false"/>
+        <arg name="gui" value="true"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="false"/>
+    </include>
+
+    <arg name="model" default="$(find rm_quad)/urdf/quadruped.xacro"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
+
+    <rosparam file="$(find rm_quad)/config/joint_control.yaml" command="load"/>
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model quadruped"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/quad" args="hip_roll_FR_controller hip_roll_FL_controller hip_roll_RR_controller hip_roll_RL_controller hip_pitch_FR_controller hip_pitch_FL_controller hip_pitch_RR_controller hip_pitch_RL_controller knee_pitch_FR_controller knee_pitch_FL_controller knee_pitch_RR_controller knee_pitch_RL_controller joint_state_controller"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+</launch>

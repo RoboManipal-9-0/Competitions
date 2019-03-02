@@ -1,0 +1,64 @@
+quad:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  hip_roll_FR_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_roll_FR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_roll_FL_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_roll_FL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_roll_RR_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_roll_RR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_roll_RL_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_roll_RL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_pitch_FR_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_pitch_FR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_pitch_FL_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_pitch_FL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_pitch_RR_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_pitch_RR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  hip_pitch_RL_controller:
+    type: effort_controllers/JointPositionController
+    joint: hip_pitch_RL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  knee_pitch_FR_controller:
+    type: effort_controllers/JointPositionController
+    joint: knee_pitch_FR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  knee_pitch_FL_controller:
+    type: effort_controllers/JointPositionController
+    joint: knee_pitch_FL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  knee_pitch_RR_controller:
+    type: effort_controllers/JointPositionController
+    joint: knee_pitch_RR
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  knee_pitch_RL_controller:
+    type: effort_controllers/JointPositionController
+    joint: knee_pitch_RL
+    pid: {p: 100.0, i: 0.01, d: 10.0}
