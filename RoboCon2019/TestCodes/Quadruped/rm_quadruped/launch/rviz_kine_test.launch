@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find rm_quadruped)/urdf/quadruped.xacro'"/>
+    
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="false"/>
+        <rosparam param="source_list">["/quadruped/goalLegState"]</rosparam>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rm_quadruped)/rviz/quadruped.rviz"/>
+
+    <node name="legControl" pkg="rm_quadruped" type="legControl"/>
+</launch>

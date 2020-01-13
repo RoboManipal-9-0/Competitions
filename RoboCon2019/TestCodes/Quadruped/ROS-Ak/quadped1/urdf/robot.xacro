@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find quadped1)/urdf/links_joints.xacro"/>
+    <!--first leg -->
+    <BOX name="base_link" origin_rpy="0 0 0" origin_xyz="0 0 2" size="1.49077 1.50805 0.32"/>
+    <BOX name="link1" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 0" size="0.971 0.32 0.32"/>
+    <JOINT_REVOLUTE name="base_link__link1" parent="base_link" child="link1" origin_xyz="0.745385 -0.754025 2" origin_rpy="0 0 0" axis_xyz="0 1 0"/>
+    <BOX name="dxel1" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 -0.02" size="0.32 0.32 0.36"/>
+    <JOINT_FIXED parent="link1" child="dxel1" axis_xyz="0 1 0" origin_xyz="0.3255 0 0" name="link1__dxel1" origin_rpy="0 0 0"/>
+    <BOX name="link2" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
+    <JOINT_REVOLUTE name="dxel1__link2" parent="dxel1" child="link2" origin_rpy="0 0 0" origin_xyz="0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+
+   <!-- second leg -->
+    <BOX name="link3" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 0" size="0.971 0.32 0.32"/>
+    <JOINT_REVOLUTE name="base_link__link3" parent="base_link" child="link3" origin_xyz="0.745385 0.434025 2" origin_rpy="0 0 0" axis_xyz="0 1 0"/>
+    <BOX name="dxel2" origin_rpy="0 0 0" origin_xyz="0.4855 0.16 -0.02" size="0.32 0.32 0.36"/>
+    <JOINT_FIXED parent="link3" child="dxel2" axis_xyz="0 1 0" origin_xyz="0.3255 0 0" name="link3__dxel2" origin_rpy="0 0 0"/>
+    <BOX name="link4" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
+    <JOINT_REVOLUTE name="dxel2__link4" parent="dxel2" child="link4" origin_rpy="0 0 0" origin_xyz="0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+
+  <!-- third leg -->
+    <BOX name="link5" origin_rpy="0 0 0" origin_xyz="-0.4855 0.16 0" size="0.971 0.32 0.32"/>
+    <JOINT_REVOLUTE name="base_link__link5" parent="base_link" child="link5" origin_xyz="-0.745385 0.434025 2" origin_rpy="0 0 0" axis_xyz="0 1 0"/>
+    <BOX name="dxel3" origin_rpy="0 0 0" origin_xyz="-0.4855 0.16 -0.02" size="0.32 0.32 0.36"/>
+    <JOINT_FIXED parent="link5" child="dxel3" axis_xyz="0 1 0" origin_xyz="-0.3255 0 0" name="link5__dxel3" origin_rpy="0 0 0"/>
+    <BOX name="link6" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
+    <JOINT_REVOLUTE name="dxel3__link6" parent="dxel3" child="link6" origin_rpy="0 0 0" origin_xyz="-0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+
+  <!-- fourth leg -->
+    <BOX name="link7" origin_rpy="0 0 0" origin_xyz="-0.4855 0.16 0" size="0.971 0.32 0.32"/>
+    <JOINT_REVOLUTE name="base_link__link7" parent="base_link" child="link7" origin_xyz="-0.745385 -0.754025 2" origin_rpy="0 0 0" axis_xyz="0 1 0"/>
+    <BOX name="dxel4" origin_rpy="0 0 0" origin_xyz="-0.4855 0.16 -0.02" size="0.32 0.32 0.36"/>
+    <JOINT_FIXED parent="link7" child="dxel4" axis_xyz="0 1 0" origin_xyz="-0.3255 0 0" name="link7__dxel4" origin_rpy="0 0 0"/>
+    <BOX name="link8" origin_rpy="0 0 0" origin_xyz="0 0 -0.475" size="0.3 0.48 0.95"/>
+    <JOINT_REVOLUTE name="dxel4__link8" parent="dxel4" child="link8" origin_rpy="0 0 0" origin_xyz="-0.48855 0.16 -0.18" axis_xyz="0 1 0"/>
+
+    <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo>
+
+</robot>
