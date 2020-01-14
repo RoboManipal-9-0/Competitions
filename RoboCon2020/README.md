@@ -1,5 +1,5 @@
 # Competition
-ABU RoboCon 2019 (Main website [here](https://www.aburobocon2020.com.fj/))
+ABU RoboCon 2020 (Main website [here](https://www.aburobocon2020.com.fj/))
 
 **Arena (Top view)**<br>
 ![Arena](./DATA/RoboCon2020_Arena.png)
