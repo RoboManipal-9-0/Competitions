@@ -18,6 +18,7 @@ ABU RoboCon 2019 (Main website [here](https://www.aburobocon2020.com.fj/))
 | _TR_ (in-game max) |  1200 mm  | 1200 mm  | 1500 mm  |
 | _PR_ | 1000 mm  | 1000 mm  | 1200 mm |
 | _PR_ (in-game max) | 1200 mm  | 1200 mm  | 1200 mm |
+
 (TR stands for Try Robot, PR stands for Pass Robot)
 
 Maximum weight of both the bots combined is 50 Kg.
