@@ -8,6 +8,7 @@
 #include<NWCHBase.h>
 #include<RazorIMU_9DOF.h>
 #define IMUSerial Serial1
+#define PS2Serial Serial3
 
 #define kick 10 //pin for controlling pnuematics (pin no. should be changed accoridingly)
 //Class object decalrations
@@ -43,8 +44,8 @@ void setup()
   //*********PS2**************************
   Serial.begin(57600);
 
-  Serial3.begin(115200);
-  myPS2.AttachPS2Serial(&Serial3);
+  PS2Serial.begin(115200);
+  myPS2.AttachPS2Serial(&PS2Serial);
   //myPS2.debugger.Initialize("myPS2", &Serial, DEBUG);
   //myPS2.debugger.disableDebugger();
   Serial.println("Done PS2");

@@ -1,12 +1,16 @@
 #define NO_OF_WHEELS 4
 #define DEG2RAD(x) x * 0.0174533
-bool DEBUGGERS_ON = false;
+#define DEBUGGERS_ON false
 
-char gutter;
+int PWM[] = {3,4,6,5};
+int DIR[] = {8,9,11,10};
+
+int trigPin[2] = {28,24};
+int echoPin[2] = {30,26};
 
 void flushSerial(){
   while(Serial.available())
-        gutter = Serial.read();
+    Serial.read();
 }
 
 class ROBOT{
@@ -104,11 +108,6 @@ float findDist(int trig, int echo){
 
 ROBOT BOT;
 
-int PWM[] = {3,4,6,5};
-int DIR[] = {8,9,11,10};
-
-int trig[2] = {28,24};
-int echo[2] = {30,26};
 float distance[2];
 bool align_horizontal = false;
 bool align_wall = false;
@@ -122,15 +121,15 @@ void setup() {
   BOT.AttachPins(PWM,DIR);
   BOT.Stop();
   for(int i=0;i<2;i++){
-    pinMode(echo[i],INPUT);
-    pinMode(trig[i],OUTPUT);
+    pinMode(echoPin[i],INPUT);
+    pinMode(trigPin[i],OUTPUT);
   }
   BOT.Stop();  
 }
 
 void loop() {
   for(int i=0;i<2;i++)
-    distance[i] = findDist(trig[i],echo[i]);
+    distance[i] = findDist(trigPin[i],echoPin[i]);
   if(distance[0]>0 || distance[1]>0){
     align_horizontal = true;
     aligning = true;
@@ -151,7 +150,7 @@ void loop() {
   else if(button == true){
     if(align_horizontal){
       for(int i=0;i<2;i++)
-        distance[i] = findDist(trig[i],echo[i]);
+        distance[i] = findDist(trigPin[i],echoPin[i]);
       if(distance[0]>0 && distance[1]>0){
         //align horizontally
         if(DEBUGGERS_ON){
@@ -188,7 +187,7 @@ void loop() {
   
     if(align_wall){
       for(int i=0;i<2;i++)
-        distance[i] = findDist(trig[i],echo[i]);
+        distance[i] = findDist(trigPin[i],echoPin[i]);
       if(distance[0]>0 && distance[1]>0){
         if(DEBUGGERS_ON){
           Serial.println("Aligning with the wall");
