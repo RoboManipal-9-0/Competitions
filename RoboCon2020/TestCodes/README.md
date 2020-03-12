@@ -4,6 +4,7 @@ This readme describes the various aspects of the codes being used for RoboCon 20
 ## Code Details
 
 Platforms used: Arduino
+
 Discontinued platforms: Raspberry Pi
 
 ## File-wise Details
